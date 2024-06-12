@@ -83,6 +83,8 @@ beforeAll(async() => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, "text/html");
                 STATE = JSON.parse(doc.querySelector("body").dataset.state);
+                if (STATE["js_module"] !== null)
+                    STATE["js_module"] = "http://localhost:8080/admin" + STATE["js_module"];
                 resolve();
             });
         });
